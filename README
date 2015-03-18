@@ -1,0 +1,21 @@
+Dyno
+===
+A basic blog framework in bash.
+
+## TODO
+Everything.
+
+## Install
+```bash
+hub clone colby/dyno
+cp colby/dyno/dyno.sh /usr/local/bin/
+export DYNO_PATH="$PWD/colby/dyno"
+```
+
+## Uninstall
+```bash
+# but why?
+rm -rf colby/dyno
+rm /usr/local/bin/dyno.sh
+unset DYNO_PATH
+```
