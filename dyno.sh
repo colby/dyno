@@ -2,7 +2,7 @@
 # vi: syntax=sh ts=4 expandtab
 
 # options
-dyno_path="/Users/colbyolson/src/dyno"
+#DYNO_PATH=""
 
 # functions
 check_for() {
@@ -20,13 +20,13 @@ build_it() {
 store_it() {
     local content="$*"
     local hash=$(hash_it "$content")
-    mkdir -p "$dyno_path/dynos"
-    echo "$content" > "$dyno_path/dynos/$hash"
+    mkdir -p "$DYNO_PATH/dynos"
+    echo "$content" > "$DYNO_PATH/dynos/$hash"
     list_it $(date +%s) $hash
 }
 
 list_it() {
-    echo "$1 $2" >> "$dyno_path/dyno.list"
+    echo "$1 $2" >> "$DYNO_PATH/dyno.list"
 }
 
 # deps
