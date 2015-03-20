@@ -1,44 +1,61 @@
 #!/bin/bash
 # vi: syntax=sh ts=4 expandtab
 
-# options
+# variables
 #DYNO_PATH=""
 
 # functions
-check_for() {
+_check() {
     which "$1" || echo "Missing dependency: $1" && exit 1
 }
 
-hash_it() {
+_hash() {
     $md5 <<< "$*" | $awk '{print $1}'
 }
 
-build_it() {
+# search through list and kill entries with $die < $now
+_prune() {
+    echo "Pruning!"
+}
+
+# build basic html li list into index.html
+_build() {
     echo "Compile!"
 }
 
-store_it() {
-    local content="$*"
-    local hash=$(hash_it "$content")
-    mkdir -p "$DYNO_PATH/dynos"
-    echo "$content" > "$DYNO_PATH/dynos/$hash"
-    list_it $(date +%s) $hash
+_store() {
+    local hash=$1
+    local dir="$DYNO_PATH/dynos"
+    shift
+    mkdir -p "$dir"
+    echo "$*" > "$dir/$hash"
 }
 
-list_it() {
-    echo "$1 $2" >> "$DYNO_PATH/dyno.list"
+_list() {
+    echo "$1 $2 $3" >> "$DYNO_PATH/dyno.list"
 }
 
 # deps
-md5=$(check_for md5sum)
-awk=$(check_for awk)
+md5=$(_check md5sum)
+awk=$(_check awk)
 
 # arguments and logic
+now=$(date +%s)
 case $# in
     0)
-        build_it
+        _prune
+        _build
+        ;;
+    1)
+        # check if hash or time, else ignore?
+        return
         ;;
     *)
-        store_it "$@"
+        # +5 years
+        die=1584729329
+        content="$*"
+        hash=$(_hash $content)
+        _list $now $die $hash
+        _store $hash $content
         ;;
 esac
