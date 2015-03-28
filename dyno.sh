@@ -57,8 +57,8 @@ case $# in
         # +5 years
         die=1584729329
         content="$*"
-        hash=$(_hash $content)
-        _list $now $die $hash
-        _store $hash $content
+        hash=$(_hash "$content")
+        _list "$now" "$die" "$hash"
+        _store "$hash" "$content"
         ;;
 esac
