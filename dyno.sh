@@ -4,6 +4,7 @@
 set -e
 # variables
 #DYNO_PATH=""
+DIR="$DYNO_PATH/dynos"
 
 # functions
 errcho() {
@@ -31,10 +32,9 @@ _build() {
 
 _store() {
     hash=$1
-    dir="$DYNO_PATH/dynos"
     shift
-    mkdir -p "$dir"
-    echo "$*" > "$dir/$hash"
+    mkdir -p "$DIR"
+    echo "$*" > "$DIR/$hash"
 }
 
 _list() {
