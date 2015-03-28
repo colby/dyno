@@ -56,7 +56,7 @@ case $# in
         [ ${#1} == 32 ] && echo "hash=$1"
         ;;
     *)
-        # +5 years
+        # default to die in +5 years
         die=1584729329
         content="$*"
         hash=$(_hash "$content")
