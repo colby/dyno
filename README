@@ -18,6 +18,7 @@ Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 ```bash
 hub clone colby/dyno
 cp dyno/dyno.sh /usr/local/bin/
+cp dyno/dyno.cron /etc/cron.d/
 export DYNO_PATH="$PWD/dyno"
 ```
 

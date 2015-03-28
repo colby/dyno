@@ -1,0 +1,2 @@
+# Dyno!
+* * * * * cd $DYNO_PATH; ./dyno.sh "$(date +%s)"
