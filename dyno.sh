@@ -43,18 +43,18 @@ _list() {
 
 # deps
 md5=$(_check md5sum)
+edit=$(which $EDITOR || errcho 'Export $EDITOR')
 
 # arguments and logic
 now=$(date +%s)
 case $# in
     0)
-        _prune
         _build
         ;;
     1)
         # if [ ${#1} == 10 ]; then echo "die=$1"; fi
-        [ ${#1} == 10 ] && echo "die=$1"
-        [ ${#1} == 32 ] && echo "hash=$1"
+        [ ${#1} == 10 ] && _prune "$1"
+        [ ${#1} == 32 ] && $edit "$DIR/$1"
         ;;
     *)
         # default to die in +5 years
