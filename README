@@ -1,9 +1,18 @@
 Dyno
 ===
-A basic blog framework in bash.
+Enough movement to get you where you need to go.
+
+## WHY
+Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 
 ## TODO
-Everything.
+* build index.html
+* purging by death date
+* updated post meta
+* EDITOR support
+* basic css file
+* monit/init support for daemon
+* cron.d scheduling?
 
 ## Install
 ```bash
