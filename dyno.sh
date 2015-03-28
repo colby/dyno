@@ -1,6 +1,7 @@
 #!/bin/bash
 # vi: syntax=sh ts=4 expandtab
 
+set -e
 # variables
 #DYNO_PATH=""
 
