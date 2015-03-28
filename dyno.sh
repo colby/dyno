@@ -5,8 +5,12 @@
 #DYNO_PATH=""
 
 # functions
+errcho() {
+    >&2 echo "$*"
+}
+
 _check() {
-    which "$1" || echo "Missing dependency: $1" && exit 1
+    which "$1" || errcho "Missing dependency: $1" && exit 1
 }
 
 _hash() {
