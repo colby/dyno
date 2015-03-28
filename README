@@ -9,10 +9,10 @@ Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 * build index.html
 * purging by death date
 * updated post meta
-* EDITOR support
+* ~~EDITOR support~~
 * basic css file
 * monit/init support for daemon
-* cron.d scheduling?
+* ~~cron.d scheduling~~
 
 ## Install
 ```bash
