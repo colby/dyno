@@ -28,21 +28,21 @@ export DYNO_PATH="$PWD/dyno"
 
 ## HOWTO
 
-1. Create a dyno.
+Create a dyno.
 ```bash
-# takes a string of text
+# takes a string of text, which is hashed into a dyno
 ./dyno.sh "This is a test!"
 ```
 
-3. Edit a dyno.
+Edit a dyno.
 ```bash
 # takes a dyno hash, loads it in $EDITOR
 ./dyno.sh a28bca1b906f539ba70ca3a0b1f2e773
 ```
 
-3. Kill a dyno.
+Kill a dyno.
 ```bash
-# takes a date string, in %s
+# takes a date string, in %s, kills any dyno older than %s
 ./dyno.sh 1584729329
 ```
 
