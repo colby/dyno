@@ -6,11 +6,12 @@
 
 # functions
 errcho() {
-    >&2 echo "$*"
+    >&2 echo "$*" 
+    exit 1
 }
 
 _check() {
-    which "$1" || errcho "Missing dependency: $1" && exit 1
+    which "$1" || errcho "Missing dependency: $1"
 }
 
 _hash() {
