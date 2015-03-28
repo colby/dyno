@@ -24,8 +24,8 @@ _build() {
 }
 
 _store() {
-    local hash=$1
-    local dir="$DYNO_PATH/dynos"
+    hash=$1
+    dir="$DYNO_PATH/dynos"
     shift
     mkdir -p "$dir"
     echo "$*" > "$dir/$hash"
