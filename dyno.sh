@@ -43,7 +43,7 @@ _list() {
 
 # deps
 md5=$(_check md5sum)
-edit=$(which $EDITOR || errcho 'Export $EDITOR')
+edit=$(which $EDITOR || errcho 'No $EDITOR variable is set')
 
 # arguments and logic
 now=$(date +%s)
