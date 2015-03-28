@@ -50,8 +50,9 @@ case $# in
         _build
         ;;
     1)
-        # check if hash or time, else ignore?
-        return
+        # if [ ${#1} == 10 ]; then echo "die=$1"; fi
+        [ ${#1} == 10 ] && echo "die=$1"
+        [ ${#1} == 32 ] && echo "hash=$1"
         ;;
     *)
         # +5 years
