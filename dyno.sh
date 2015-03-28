@@ -10,7 +10,7 @@ _check() {
 }
 
 _hash() {
-    $md5 <<< "$*" | $awk '{print $1}'
+    $md5 <<< "$*" | cut -d' ' -f1
 }
 
 # search through list and kill entries with $die < $now
@@ -37,7 +37,6 @@ _list() {
 
 # deps
 md5=$(_check md5sum)
-awk=$(_check awk)
 
 # arguments and logic
 now=$(date +%s)
