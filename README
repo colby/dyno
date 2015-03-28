@@ -1,11 +1,14 @@
 Dyno
 ===
+
 Enough movement to get you where you need to go.
 
 ## WHY
+
 Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 
 ## TODO
+
 * build index.html
 * purging by death date
 * updated post meta
@@ -14,7 +17,8 @@ Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 * monit/init support for daemon
 * ~~cron.d scheduling~~
 
-## Install
+## INSTALL
+
 ```bash
 hub clone colby/dyno
 cp dyno/dyno.sh /usr/local/bin/
@@ -22,7 +26,28 @@ cp dyno/dyno.cron /etc/cron.d/
 export DYNO_PATH="$PWD/dyno"
 ```
 
-## Uninstall
+## HOWTO
+
+1. Create a dyno.
+```bash
+# takes a string of text
+./dyno.sh "This is a test!"
+```
+
+3. Edit a dyno.
+```bash
+# takes a dyno hash, loads it in $EDITOR
+./dyno.sh a28bca1b906f539ba70ca3a0b1f2e773
+```
+
+3. Kill a dyno.
+```bash
+# takes a date string, in %s
+./dyno.sh 1584729329
+```
+
+## NOMOREINSTALL
+
 ```bash
 # but why?
 rm -rf $DYNO_PATH/dyno
