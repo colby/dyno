@@ -43,10 +43,11 @@ _list() {
 
 # deps
 md5=$(_check md5sum)
-edit=$(which $EDITOR || errcho 'No $EDITOR variable is set')
+date=$(_check gdate)
+edit=$(which $EDITOR || errcho 'Missing variable: $EDITOR')
 
 # arguments and logic
-now=$(date +%s)
+now=$($date +%s)
 case $# in
     0)
         _build
@@ -58,7 +59,7 @@ case $# in
         ;;
     *)
         # default to die in +5 years
-        die=1584729329
+        die=$($date -d '+5 year' "+%s")
         content="$*"
         hash=$(_hash "$content")
         _list "$now" "$die" "$hash"
