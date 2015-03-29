@@ -21,11 +21,6 @@ _hash() {
     $md5 <<< "$*" | cut -d' ' -f1
 }
 
-# search through list and kill entries with $die < $now
-_prune() {
-    echo "Pruning!"
-}
-
 # build basic html li list into index.html
 _build() {
     echo "Compile!"
@@ -49,21 +44,29 @@ edit=$(which $EDITOR || errcho 'Missing variable: $EDITOR')
 
 # arguments and logic
 now=$($date +%s)
+
 case $# in
     0)
         _build
         ;;
     1)
-        # if [ ${#1} == 10 ]; then echo "die=$1"; fi
-        [ ${#1} == 10 ] && _prune "$1"
+        if [ ${#1} == 10 ]; then
+            while read line; do
+                set -- $line
+                birth=$1
+                death=$2
+                hash=$3
+                [ $death -lt $now ] && sed -i "/^$birth/d" "$LIST"
+            done < $LIST
+        fi
         [ ${#1} == 32 ] && $edit "$DIR/$1"
         ;;
     *)
-        # default to die in +5 years
+        # default is die in +5 years
         die=$($date -d '+5 year' "+%s")
         content="$*"
         hash=$(_hash "$content")
-        _list "$now" "$die" "$hash"
+        _track "$now" "$die" "$hash"
         _store "$hash" "$content"
         ;;
 esac
