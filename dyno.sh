@@ -22,11 +22,6 @@ _hash() {
     $md5 <<< "$*" | cut -d' ' -f1
 }
 
-# build basic html li list into index.html
-_build() {
-    echo "Compile!"
-}
-
 _store() {
     hash=$1
     shift
@@ -70,7 +65,7 @@ case $# in
         header
         while read line; do
             set -- $line
-            fulldate=$($date --date="@$1")
+          # fulldate=$($date --date="@$1")
             post="$DIR/$3"
             title=$(head -n1 "$DIR/$3")
             echo "<a href='$post'>$title</a>" >> "$INDEX"
@@ -87,7 +82,7 @@ case $# in
         [ ${#1} == 32 ] && $edit "$DIR/$1"
         ;;
     *)
-        # default is die in +5 years
+      # default is die in +5 years
         die=$($date -d '+5 year' "+%s")
         content="$*"
         hash=$(_hash "$content")
