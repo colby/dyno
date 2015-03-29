@@ -5,6 +5,7 @@ set -e
 # variables
 #DYNO_PATH=""
 DIR="$DYNO_PATH/dynos"
+LIST="$DYNO_PATH/dyno.list"
 
 # functions
 errcho() {
@@ -37,8 +38,8 @@ _store() {
     echo "$*" > "$DIR/$hash"
 }
 
-_list() {
-    echo "$1 $2 $3" >> "$DYNO_PATH/dyno.list"
+_track() {
+    echo "$1 $2 $3" >> $LIST
 }
 
 # deps
