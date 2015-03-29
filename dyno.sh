@@ -6,6 +6,7 @@ set -e
 #DYNO_PATH=""
 DIR="$DYNO_PATH/dynos"
 LIST="$DYNO_PATH/dyno.list"
+INDEX="$DYNO_PATH/index.html"
 
 # functions
 errcho() {
@@ -37,6 +38,24 @@ _track() {
     echo "$1 $2 $3" >> $LIST
 }
 
+header() {
+cat > $INDEX <<EOL
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dyno!</title>
+</head>
+<body>
+EOL
+}
+
+footer() {
+cat >> $INDEX <<EOL
+</body>
+</html>
+EOL
+}
+
 # deps
 md5=$(_check md5sum)
 sed=$(_check sed)
@@ -48,15 +67,21 @@ now=$($date +%s)
 
 case $# in
     0)
-        _build
+        header
+        while read line; do
+            set -- $line
+            fulldate=$($date --date="@$1")
+            post="$DIR/$3"
+            title=$(head -n1 "$DIR/$3")
+            echo "<a href='$post'>$title</a>" >> "$INDEX"
+        done < $LIST
+        footer
         ;;
     1)
         if [ ${#1} == 10 ]; then
             while read line; do
                 set -- $line
-                birth=$1
-                death=$2
-                [ $death -lt $now ] && $sed -i "/^$birth/d" "$LIST"
+                [ $2 -lt $now ] && $sed -i "/^$1/d" "$LIST"
             done < $LIST
         fi
         [ ${#1} == 32 ] && $edit "$DIR/$1"
