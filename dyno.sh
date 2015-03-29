@@ -39,6 +39,7 @@ _track() {
 
 # deps
 md5=$(_check md5sum)
+sed=$(_check sed)
 date=$(_check gdate)
 edit=$(which $EDITOR || errcho 'Missing variable: $EDITOR')
 
@@ -55,8 +56,7 @@ case $# in
                 set -- $line
                 birth=$1
                 death=$2
-                hash=$3
-                [ $death -lt $now ] && sed -i "/^$birth/d" "$LIST"
+                [ $death -lt $now ] && $sed -i "/^$birth/d" "$LIST"
             done < $LIST
         fi
         [ ${#1} == 32 ] && $edit "$DIR/$1"
