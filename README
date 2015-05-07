@@ -9,10 +9,13 @@ Sometimes you feel like building a cabin with a bunch of tiny tools, dont you?
 
 ## TODO
 
+* full installation script
 * build index.html
 * ~~purging by death date~~
-* updated post meta
+* metadata support functions
 * ~~EDITOR support~~
+* drafts and publish by symlink
+* long and short flag support
 * basic css file
 * monit/init support for daemon
 * ~~cron.d scheduling~~

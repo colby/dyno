@@ -2,8 +2,10 @@
 # vi: syntax=sh ts=4 expandtab
 
 set -e
+set -x
+
 # variables
-#DYNO_PATH=""
+DYNO_PATH="/Users/colbyolson/src/dyno"
 DIR="$DYNO_PATH/dynos"
 LIST="$DYNO_PATH/dyno.list"
 INDEX="$DYNO_PATH/index.html"
